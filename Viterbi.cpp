@@ -13,7 +13,7 @@ int main()
   vector <string> states;
   
   int nostates;
-
+  //The possible hidden states --- change those here
   states.pb("Healthy");
   states.pb("Fever");
  
