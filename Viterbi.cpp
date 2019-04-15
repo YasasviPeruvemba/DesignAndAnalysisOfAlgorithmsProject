@@ -39,8 +39,8 @@ int main()
     start_probability[states[i]] = str_prob;
   }
   cout<<endl;
-  //Getting the transition probabliities for the states
-  cout<<"Enter transitin probabliities for : "<<endl;
+  //Getting the transition probabilities for the states
+  cout<<"Enter transition probabilities for : "<<endl;
   double trans_prob;
   for(int i=0;i<states.size();i++){
     for(int j=0;j<states.size();j++){
@@ -85,7 +85,6 @@ int main()
   string prev_st_selected;
   double max_prob;
   for(int t=1; t<obs.size();t++){
-    //map <pair<string,string>,double> temp;
     V.pb(temp);
     for(int st=0;st<states.size();st++){
       max_tr_prob = V[t-1][mp(states[0],"probability")]*transition_probability[mp(states[0],states[st])];
@@ -112,9 +111,9 @@ int main()
 
   for(int i=0;i<V.size();i++){
     for(int k=0;k<states.size();k++){
-      //cout<<states[k]<<" : "<<V[i][mp(states[k],"probability")]<<"\t";
+      cout<<states[k]<<" : "<<V[i][mp(states[k],"probability")]<<"\t";
     }
-    //cout<<endl;
+    cout<<endl;
   }
 
   max_prob = FLT_MIN;
