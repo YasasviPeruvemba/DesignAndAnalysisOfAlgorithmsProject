@@ -5,13 +5,11 @@ using namespace std;
 
 int main()
 {
-	map <string,double> start_probability;
+  map <string,double> start_probability;
   map <pair<string,string>,double> transition_probability;
   map <pair<string,string>,double> emmission_probability;
 
   vector <string> states;
-  
-  int nostates;
   
   //The possible hidden states --- change those here
   states.pb("Healthy");
