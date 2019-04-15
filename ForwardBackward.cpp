@@ -5,11 +5,13 @@ using namespace std;
 
 int main()
 {
-  map <string,double> start_probability;
+	map <string,double> start_probability;
   map <pair<string,string>,double> transition_probability;
   map <pair<string,string>,double> emmission_probability;
 
   vector <string> states;
+  
+  int nostates;
   
   //The possible hidden states --- change those here
   states.pb("Healthy");
@@ -86,18 +88,16 @@ int main()
   	for(int st=0; st<states.size();st++){
   		if(i==0){
   			prev_f_sum = start_probability[states[st]];
-        //cout<<prev_f_sum<<"\t";
   		}
   		else{
         prev_f_sum = 0;
   			for(int k=0;k<states.size();k++){
   				prev_f_sum += f_prev[k]*transition_probability[mp(states[k],states[st])];
-  			  //cout<<prev_f_sum<<"\t";
         }
   		}
   		f_curr.pb(emmission_probability[mp(states[st],obs[i])]*prev_f_sum);
   		cout<<"Forward Probablity for "<<states[st]<<" : "<<f_curr[st]<<endl;
-  	}
+    }
   	fwd.pb(f_curr);
   	f_prev = f_curr;
   }
@@ -135,7 +135,6 @@ int main()
         cout<<"Backward Probablity for "<<states[st]<<" : "<<b_sum<<endl;
       }
     }
-    vector <double> a;
     bkw.pb(b_curr);
     b_prev = b_curr;
   }
@@ -167,5 +166,4 @@ int main()
   for(int i=0;i<output.size();i++){
     cout<<i+1<<". "<<output[i]<<endl;
   }
-
 }
